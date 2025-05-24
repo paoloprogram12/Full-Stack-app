@@ -6,16 +6,19 @@ def mainMenu():
     for widget in root.winfo_children(): # destroys any widget that is currently on the window
         widget.destroy()
 
-    global viewPassButton, addAccButton, searchPassButton # allows to be updated globally
+    global viewPassButton, addAccButton, searchPassButton, deleteAccButton # allows to be updated globally
 
     viewPassButton = tk.Button(root, text="View Accounts", command=viewPass)
     addAccButton = tk.Button(root, text="Add Account", command=addAcc)
     searchPassButton = tk.Button(root, text="Search Passwords", command=searchPass)
+    deleteAccButton = tk.Button(root, text="Delete Account", command=deleteAcc)
 
     viewPassButton.pack()
     addAccButton.pack()
     searchPassButton.pack()    
+    deleteAccButton.pack()
 
+    
 def savePass():
     username = userEntry.get()
     password = passEntry.get()
@@ -27,6 +30,7 @@ def viewPass():
     viewPassButton.destroy()
     addAccButton.destroy()
     searchPassButton.destroy()
+    deleteAccButton.destroy()
 
     savedLabel = tk.Label(root, text="Saved Accounts:")
     savedLabel.pack()
@@ -39,6 +43,12 @@ def viewPass():
 
     doneButton = tk.Button(root, text="Done", command=mainMenu)
     doneButton.pack()
+
+def deleteAcc():
+    viewPassButton.destroy()
+    addAccButton.destroy()
+    deleteAccButton.destroy()
+    searchPassButton.destroy()
 
 
 def addAcc():
@@ -114,6 +124,7 @@ enterButton.pack()
 viewPassButton = tk.Button(root, text="View Accounts", command=viewPass)
 addAccButton = tk.Button(root, text="Add Account", command=addAcc)
 searchPassButton = tk.Button(root, text="Search Passwords", command=searchPass)
+deleteAccButton = tk.Button(root, text="Delete Account", command=deleteAcc)
 
 root.mainloop() # starts main loop
 
