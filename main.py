@@ -18,7 +18,7 @@ def mainMenu():
     searchPassButton.pack()    
     deleteAccButton.pack()
 
-    
+
 def savePass():
     username = userEntry.get()
     password = passEntry.get()
@@ -50,11 +50,16 @@ def deleteAcc():
     deleteAccButton.destroy()
     searchPassButton.destroy()
 
+    for user, pw in passwords.items():
+        accountButton = tk.Button(root, text=f"{user}")
+        accountButton.pack()
+
 
 def addAcc():
     viewPassButton.destroy()
     addAccButton.destroy()
     searchPassButton.destroy()
+    deleteAccButton.destroy()
 
     global userEntry, passEntry
 
@@ -78,6 +83,8 @@ def searchPass():
     viewPassButton.destroy()
     addAccButton.destroy()
     searchPassButton.destroy()
+    deleteAccButton.destroy()
+
 
     searchLabel = tk.Label(root, text="Enter Account Name:")
     searchEntry = tk.Entry(root)
