@@ -49,10 +49,15 @@ def deleteAcc():
     addAccButton.destroy()
     deleteAccButton.destroy()
     searchPassButton.destroy()
-
-    for user, pw in passwords.items():
-        accountButton = tk.Button(root, text=f"{user}")
-        accountButton.pack()
+    if len(passwords) == 1:
+        noDeleteLabel = tk.Label(root, text="Unable to delete account")
+        noDeleteLabel.pack()
+        noDeleteButton = tk.Button(root, text="Done", command=mainMenu)
+        noDeleteButton.pack()
+    else:
+        for user, pw in passwords.items():
+            accountButton = tk.Button(root, text=f"{user}")
+            accountButton.pack()
 
 
 def addAcc():
