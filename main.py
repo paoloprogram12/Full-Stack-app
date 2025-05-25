@@ -59,6 +59,9 @@ def deleteAcc():
             accountButton = tk.Button(root, text=f"{user}")
             accountButton.pack()
 
+        cancelButton = tk.Button(root, text="Cancel", command=mainMenu)
+        cancelButton.pack()
+
 
 def addAcc():
     viewPassButton.destroy()
