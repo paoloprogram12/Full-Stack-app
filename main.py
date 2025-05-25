@@ -24,6 +24,7 @@ def savePass():
     password = passEntry.get()
     passwords[username] = password
 
+
     mainMenu()
 
 def viewPass():
@@ -44,11 +45,19 @@ def viewPass():
     doneButton = tk.Button(root, text="Done", command=mainMenu)
     doneButton.pack()
 
+def deleteAction():
+    for user, pw in passwords.items():
+        accountButton.destroy()
+    cancelButton.destroy()
+
 def deleteAcc():
     viewPassButton.destroy()
     addAccButton.destroy()
     deleteAccButton.destroy()
     searchPassButton.destroy()
+
+    global accountButton, cancelButton
+
     if len(passwords) == 1:
         noDeleteLabel = tk.Label(root, text="Unable to delete account")
         noDeleteLabel.pack()
@@ -56,7 +65,7 @@ def deleteAcc():
         noDeleteButton.pack()
     else:
         for user, pw in passwords.items():
-            accountButton = tk.Button(root, text=f"{user}")
+            accountButton = tk.Button(root, text=f"{user}", command=deleteAction)
             accountButton.pack()
 
         cancelButton = tk.Button(root, text="Cancel", command=mainMenu)
